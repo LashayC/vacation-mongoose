@@ -10,8 +10,6 @@ const vacationSpotSchema = new Schema({
     location: String,
     description: String,
     photo: String,
-    cost: Number,
-    packingList: Array
 })
 
 //Create model using mongoose method 'model' and use module.exports(tells node which code to export from a file so other files can access it)
