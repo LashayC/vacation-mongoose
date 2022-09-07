@@ -6,10 +6,12 @@ const Schema = mongoose.Schema
 
 //What you want in db and how they can be represented.
 const vacationSpotSchema = new Schema({
-    destination: String,
+    destination: {type: String, unique: true}, //The 'unique' option creates a unique index. Ensures can't have 2 docs w/ same name
     location: String,
     description: String,
-    photo: String
+    photo: String,
+    cost: Number,
+    packingList: Array
 })
 
 //Create model using mongoose method 'model' and use module.exports(tells node which code to export from a file so other files can access it)
