@@ -1,13 +1,13 @@
 
 require("dotenv").config()
-/* const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
-const MongoClient = require("mongodb").MongoClient;
-const fetch = require("node-fetch"); //installed vers 2.6.6
-const {ObjectId} = require('mongodb')
+// const MongoClient = require("mongodb").MongoClient;
+// const fetch = require("node-fetch"); //installed vers 2.6.6
+// const {ObjectId} = require('mongodb')
 var port = process.env.PORT || 8090;
-*/
+
 
 
 //Mongoose Code ==================================================================================================
@@ -18,11 +18,14 @@ mongoose.connect(url, {useNewURLParser: true}) //Connects to db using mongoose
 const db = mongoose.connection //To check whether connection has succeeded use open event. To check if failed use error event.
 db.once('open', _ => {
     console.log('Database connected:', url)
+    app.listen(port, () => console.log(`Server running on port ${port}`))
 })//
 
 db.on('error', err => {
     console.error('connection error:', url)
 })
+
+
 
 /* 
 Mongoose uses models to do crud operations on MongoDB. To create a Model, create a Schema(lets you define structure of an entry(aka document) in the collection)
@@ -114,8 +117,8 @@ async function runCode(){   //You can use the unique option in the model to ensu
     // const deleted = await VacationSpot.findOneAndDelete({destination: 'Pyramids'})
 }
 
-runCode()
-    .catch(error => {console.error(error)})
+// runCode()
+//     .catch(error => {console.error(error)})
 
 
 
