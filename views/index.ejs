@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
+    <title>Vacation</title>
+  </head>
+  <body>
+    <div class="container-fluid p-5 bg-light mb-4 text-center">
+      <h1>Vacation Destinations Wishlist</h1>
+      <p>
+        Found exciting places to visition on your next vacation? Use the form
+        below to add them to your wishlist
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+
+          <form action="/wishlist" method="POST">
+            <div>
+              <label for="destination"> Destination name </label>
+              <input
+                type="text"
+                class="form-control"
+                name="destination"
+                id="destination"
+                placeholder="Enter the name of the destination"
+                required
+                minlength="2"
+              />
+            </div>
+            <div>
+              <label for="location"> Location </label>
+              <input
+                type="text"
+                class="form-control"
+                name="location"
+                id="location"
+                placeholder="Where is it located?"
+                required
+                minlength="2"
+              />
+            </div>
+            <div>
+              <label for="description"> Description </label>
+              <textarea
+                name="description"
+                class="form-control"
+                id="description"
+                cols="30"
+                rows="5"
+                placeholder="Where is it located?"
+              ></textarea>
+            </div>
+            <div class="d-grid mt-1">
+              <button id="addItem" type="submit" class="btn btn-primary">
+                Add to list
+              </button>
+            </div>
+          </form>
+          
+        </div>
+
+        <div class="col-md-9">
+          <h2 class="text-center"><%= wishlist.length === 0 ? 'Enter Destination Details' : 'My WishList' %></h2>
+          <div class="row justify-content-center" id="myWishlist">
+
+            <% for (var i = 0; i < wishlist.length; i++) { %>
+            <div class="col-4" id="<%= wishlist[i]._id %>">
+              <div class="card mb-2 h-100">
+                <img src=<%= wishlist[i].photo ? wishlist[i].photo : 'images/defaultVacation.jpeg' %> alt="" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title" id="cardHeading"><%= wishlist[i].destination %></h5>
+                  <h6 class="card-title" id="cardSubhead"><%= wishlist[i].location %></h6>
+                  <p class="card=text"><%= wishlist[i].description %></p>
+                  <div class="d-grid gap-3 d-md-block">
+                    <button id="editButton" class="btn btn-warning btn-sm me-3">Edit</button>
+                    <button id="removeButton" class="btn btn-danger btn-sm">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% } %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script rel="text/javascript" src="main.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
