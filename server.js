@@ -1,11 +1,11 @@
 
 require("dotenv").config()
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 // const MongoClient = require("mongodb").MongoClient;
-// const fetch = require("node-fetch"); //installed vers 2.6.6
-// const {ObjectId} = require('mongodb')
+const fetch = require("node-fetch"); //installed vers 2.6.6
+const {ObjectId} = require('mongodb')
 var port = process.env.PORT || 8090;
 
 
@@ -126,7 +126,7 @@ async function runCode(){   //You can use the unique option in the model to ensu
 //Mongoose Code ==================================================================================================
 
 
-/*
+
 MongoClient.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true })
   .then((client) => {
     console.log("Connected to Database");
@@ -225,4 +225,4 @@ MongoClient.connect(process.env.MONGO_CONNECTION, { useUnifiedTopology: true })
     
   })
   .catch((error) => console.error(error));
-  */
+  
